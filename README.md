@@ -14,4 +14,3 @@ You can modify the config.lua
 
 # Authors
 - Me : @avadakedavra6
-- thanks to [this](https://readme.so) for generate this readme :)
