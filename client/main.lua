@@ -48,7 +48,7 @@ local Animation = MoneyWash.Animation
 
 -- // Function GetBlackMoney \\ --
 function GetBlackMoney()
-    ESX.TriggerServerCallback("tnMoneyWash:GetMoney", function(dataMoney)
+    ESX.TriggerServerCallback("AKMoneyWash:GetMoney", function(dataMoney)
         blackMoney = dataMoney
     end)
 end
@@ -79,21 +79,21 @@ function ChangeDryer(status)
     end)
 end
 
-RegisterNetEvent('tnMoneyWash:ChangeDryer')
-AddEventHandler('tnMoneyWash:ChangeDryer', function(status)
+RegisterNetEvent('AKMoneyWash:ChangeDryer')
+AddEventHandler('AKMoneyWash:ChangeDryer', function(status)
     ChangeDryer(status)
 end)
 
 -- // Check If Player Wash \\ --
 local PlayerIsWashing = true 
 function GetIfPlayerIsWashing()
-    ESX.TriggerServerCallback("tnMoneyWash:GetIfPlayerIsWashing", function(dataStatus)
+    ESX.TriggerServerCallback("AKMoneyWash:GetIfPlayerIsWashing", function(dataStatus)
         PlayerIsWashing = dataStatus
     end)
 end
 
-RegisterNetEvent('tnMoneyWash:SetIfPlayerIsWashingForClient')
-AddEventHandler('tnMoneyWash:SetIfPlayerIsWashingForClient', function(status)
+RegisterNetEvent('AKMoneyWash:SetIfPlayerIsWashingForClient')
+AddEventHandler('AKMoneyWash:SetIfPlayerIsWashingForClient', function(status)
     PlayerIsWashing = status
 end)
 
@@ -127,8 +127,8 @@ function OpenWashMenu()
                                     FreezeEntityPosition(PlayerPedId(), true)
                                     washMenu.Closable = false
 
-                                    TriggerServerEvent('tnMoneyWash:ChangeDryerToAll', true)
-                                    TriggerServerEvent('tnMoneyWash:SetIfPlayerIsWashing', true)
+                                    TriggerServerEvent('AKMoneyWash:ChangeDryerToAll', true)
+                                    TriggerServerEvent('AKMoneyWash:SetIfPlayerIsWashing', true)
                                 end
                                 }, progressMenu)
                             else
@@ -168,10 +168,10 @@ function OpenWashMenu()
                         loading = 0
                         FreezeEntityPosition(PlayerPedId(), false) 
                         ClearPedTasks(PlayerPedId())
-                        TriggerServerEvent('tnMoneyWash:Wash', SliderPannel.Index, math.floor(SliderPannel.Index - Round(SliderPannel.Index * (MoneyWash.Percentage/100))))
+                        TriggerServerEvent('AKMoneyWash:Wash', SliderPannel.Index, math.floor(SliderPannel.Index - Round(SliderPannel.Index * (MoneyWash.Percentage/100))))
                         
-                        TriggerServerEvent('tnMoneyWash:ChangeDryerToAll', false)
-                        TriggerServerEvent('tnMoneyWash:SetIfPlayerIsWashing', false)
+                        TriggerServerEvent('AKMoneyWash:ChangeDryerToAll', false)
+                        TriggerServerEvent('AKMoneyWash:SetIfPlayerIsWashing', false)
                     end
                 end)
 				Wait(0)
