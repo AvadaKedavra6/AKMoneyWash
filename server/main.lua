@@ -30,8 +30,8 @@ local function n(src)return GetPlayerName(src)end
 local function d(nb)return ESX.Math.GroupDigits(nb) end
 
 -- // Function to wash \\ --
-RegisterNetEvent('tnMoneyWash:Wash')
-AddEventHandler('tnMoneyWash:Wash', function(moneyToRemove, moneyToGive)
+RegisterNetEvent('AKMoneyWash:Wash')
+AddEventHandler('AKMoneyWash:Wash', function(moneyToRemove, moneyToGive)
     local _src = source
     local xPlayer = ESX.GetPlayerFromId(_src)
     if xPlayer.getAccount("black_money").money >= moneyToRemove then
@@ -64,22 +64,22 @@ AddEventHandler('tnMoneyWash:Wash', function(moneyToRemove, moneyToGive)
     end
 end)
 
-RegisterNetEvent('tnMoneyWash:SetIfPlayerIsWashing')
-AddEventHandler('tnMoneyWash:SetIfPlayerIsWashing', function(status)
+RegisterNetEvent('AKMoneyWash:SetIfPlayerIsWashing')
+AddEventHandler('AKMoneyWash:SetIfPlayerIsWashing', function(status)
     PlayerIsWashing = status
-    TriggerClientEvent('tnMoneyWash:SetIfPlayerIsWashingForClient', -1, status)
+    TriggerClientEvent('AKMoneyWash:SetIfPlayerIsWashingForClient', -1, status)
 end)
 
-ESX.RegisterServerCallback("tnMoneyWash:GetIfPlayerIsWashing", function(source, cb)
+ESX.RegisterServerCallback("AKMoneyWash:GetIfPlayerIsWashing", function(source, cb)
     cb(PlayerIsWashing)
 end)
 
-RegisterNetEvent('tnMoneyWash:ChangeDryerToAll')
-AddEventHandler('tnMoneyWash:ChangeDryerToAll', function(status)
-    TriggerClientEvent('tnMoneyWash:ChangeDryer', -1, status)
+RegisterNetEvent('AKMoneyWash:ChangeDryerToAll')
+AddEventHandler('AKMoneyWash:ChangeDryerToAll', function(status)
+    TriggerClientEvent('AKMoneyWash:ChangeDryer', -1, status)
 end)
 
-ESX.RegisterServerCallback("tnMoneyWash:GetMoney", function(source, cb)
+ESX.RegisterServerCallback("AKMoneyWash:GetMoney", function(source, cb)
     local _src = source
     local xPlayer = ESX.GetPlayerFromId(_src)
     cb(xPlayer.getAccount('black_money').money)
